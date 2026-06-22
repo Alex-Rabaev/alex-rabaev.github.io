@@ -1,0 +1,28 @@
+/* resume.css — résumé download call-to-action band. */
+.resume {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: clamp(var(--space-lg), 4vw, var(--space-2xl));
+  border-radius: var(--radius-3);
+  background: linear-gradient(
+    150deg,
+    color-mix(in oklch, var(--accent) 14%, var(--surface-raised)),
+    var(--surface-raised) 70%
+  );
+  border: 1px solid color-mix(in oklch, var(--accent) 28%, var(--border));
+}
+
+.resume__text {
+  max-width: 42ch;
+}
+
+.resume__title {
+  font-size: var(--font-size-lg);
+}
+
+.resume__text p {
+  margin-top: var(--space-2xs);
+}

@@ -1,0 +1,76 @@
+/* experience.css — reverse-chronological timeline. */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.timeline__item {
+  position: relative;
+  padding-inline-start: var(--space-xl);
+}
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0.32rem;
+  inset-block: 0.45rem 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline__item:last-child::before {
+  inset-block-end: auto;
+  height: 0.6rem;
+}
+
+.timeline__item::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.35rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.timeline__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2xs);
+}
+
+.timeline__role {
+  font-size: var(--font-size-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+
+.timeline__org {
+  color: var(--accent);
+  font-weight: var(--weight-medium);
+}
+
+.timeline__dates {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.timeline__points {
+  margin-top: var(--space-xs);
+  padding-inline-start: var(--space-sm);
+  color: var(--text-muted);
+  display: grid;
+  gap: var(--space-3xs);
+}
+
+.timeline__points li {
+  font-size: var(--font-size-sm);
+}

@@ -1,0 +1,114 @@
+/* project-card.css — a single bento cell. */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--card-padding);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-1);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in oklch, var(--accent) 50%, var(--border));
+  box-shadow: var(--shadow-2);
+}
+
+.project-card--featured {
+  background: linear-gradient(
+    160deg,
+    color-mix(in oklch, var(--accent) 12%, var(--surface-raised)),
+    var(--surface-raised) 60%
+  );
+  border-color: color-mix(in oklch, var(--accent) 30%, var(--border));
+}
+
+.project-card__media {
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  background: var(--surface-sunken);
+  aspect-ratio: 16 / 10;
+}
+
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card--featured .project-card__media {
+  aspect-ratio: 16 / 9;
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  flex: 1;
+}
+
+.project-card__title {
+  font-size: var(--font-size-md);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+}
+
+.project-card__summary {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs);
+  margin-top: auto;
+  padding-top: var(--space-xs);
+  list-style: none;
+}
+
+.project-card__tags li {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  padding: 0.2em 0.6em;
+  border-radius: var(--radius-pill);
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-top: var(--space-xs);
+}
+
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--accent);
+}
+
+.project-card__link svg {
+  width: 1em;
+  height: 1em;
+}
+
+.project-card__link:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card:hover {
+    transform: none;
+  }
+}

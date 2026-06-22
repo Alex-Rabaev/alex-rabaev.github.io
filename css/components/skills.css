@@ -1,0 +1,40 @@
+/* skills.css — curated skill groups. */
+.skills__grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.skill-group {
+  padding: var(--card-padding);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2);
+}
+
+.skill-group__title {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-sm);
+}
+
+.skill-group__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-group__list li {
+  font-size: var(--font-size-sm);
+  padding: 0.3em 0.7em;
+  border-radius: var(--radius-1);
+  background: var(--surface-sunken);
+  color: var(--text);
+  border: 1px solid var(--border);
+}

@@ -1,0 +1,29 @@
+/* footer.css — site footer. */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-2xl);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-block: var(--space-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.site-footer__note {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+}
+
+.site-footer a {
+  color: var(--text-muted);
+}
+
+.site-footer a:hover {
+  color: var(--accent);
+}

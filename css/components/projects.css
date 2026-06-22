@@ -1,0 +1,30 @@
+/* projects.css — responsive bento grid container. */
+.projects__grid {
+  display: grid;
+  gap: clamp(var(--space-sm), 1.5vw, var(--space-md));
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Tablet+: 4-col bento. Cards span 2 cols (2 per row); featured is a 2x2 anchor. */
+@media (min-width: 640px) {
+  .projects__grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(11rem, auto);
+  }
+
+  .projects__grid > .project-card {
+    grid-column: span 2;
+  }
+
+  .project-card--featured {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+/* Mobile: single importance-ordered column. */
+@media (max-width: 639px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,24 @@
+/*
+ * main.css — cascade-layer entry point.
+ * Declares the canonical @layer order ONCE; later layers win.
+ * Each file below is authored inside its matching @layer.
+ */
+@layer reset, tokens, base, components, utilities;
+
+@import url("reset.css") layer(reset);
+@import url("tokens.css") layer(tokens);
+@import url("base.css") layer(base);
+
+@import url("components/nav.css") layer(components);
+@import url("components/theme-toggle.css") layer(components);
+@import url("components/hero.css") layer(components);
+@import url("components/projects.css") layer(components);
+@import url("components/project-card.css") layer(components);
+@import url("components/experience.css") layer(components);
+@import url("components/skills.css") layer(components);
+@import url("components/about.css") layer(components);
+@import url("components/resume.css") layer(components);
+@import url("components/contact.css") layer(components);
+@import url("components/footer.css") layer(components);
+
+@import url("utilities.css") layer(utilities);

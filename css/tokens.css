@@ -1,0 +1,131 @@
+/*
+ * tokens.css — three-tier design tokens (authored in @layer tokens).
+ *   primitive  → raw values
+ *   semantic   → role-based tokens consumed by components
+ *   component  → component-scoped tokens
+ *
+ * Theming contract: the active theme is `data-theme="light|dark"` on <html>.
+ *   - :root holds LIGHT semantic tokens.
+ *   - [data-theme="dark"] overrides for an explicit dark choice.
+ *   - @media (prefers-color-scheme: dark) overrides ONLY when no explicit
+ *     data-theme is set (no-JS / no stored preference) via :root:not([data-theme]).
+ *
+ * [ASSUMPTION] Accent = indigo-violet and font families are sensible modern
+ * placeholders pending the style-direction answer (PRD Open Question 1).
+ * Colors use oklch() for perceptually-even theming; never hardcode hex in components.
+ */
+:root {
+  color-scheme: light dark;
+
+  /* ---- primitive: spacing (fluid-friendly step scale) ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+
+  /* ---- primitive: radius ---- */
+  --radius-1: 0.375rem;
+  --radius-2: 0.75rem;
+  --radius-3: 1rem;
+  --radius-pill: 999px;
+
+  /* ---- primitive: type families (placeholder self-host slots; see README) ---- */
+  --font-display: "Portfolio Display", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Portfolio Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Portfolio Mono", ui-monospace, "SFMono-Regular", "JetBrains Mono",
+    "Cascadia Code", Menlo, Consolas, monospace;
+
+  /* ---- primitive: fluid type scale (clamp: min @360px → max @1240px) ---- */
+  --font-size-xs: clamp(0.78rem, 0.74rem + 0.18vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 0.84rem + 0.18vw, 0.95rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --font-size-md: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --font-size-lg: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+  --font-size-xl: clamp(1.9rem, 1.5rem + 2vw, 3rem);
+  --font-size-2xl: clamp(2.5rem, 1.8rem + 3.4vw, 4.5rem);
+
+  /* ---- primitive: weights / misc ---- */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 720;
+  --line-tight: 1.12;
+  --line-snug: 1.35;
+
+  /* ---- primitive: light palette (oklch) ---- */
+  --c-bg: oklch(0.985 0.004 270);
+  --c-bg-raised: oklch(0.965 0.006 270);
+  --c-bg-sunken: oklch(0.93 0.008 270);
+  --c-ink: oklch(0.23 0.02 270);
+  --c-ink-soft: oklch(0.46 0.02 270);
+  --c-line: oklch(0.89 0.01 270);
+  --c-accent: oklch(0.55 0.18 275);
+  --c-accent-strong: oklch(0.48 0.19 275);
+  --c-on-accent: oklch(0.99 0 0);
+
+  /* ---- semantic (LIGHT) ---- */
+  --surface: var(--c-bg);
+  --surface-raised: var(--c-bg-raised);
+  --surface-sunken: var(--c-bg-sunken);
+  --text: var(--c-ink);
+  --text-muted: var(--c-ink-soft);
+  --border: var(--c-line);
+  --accent: var(--c-accent);
+  --accent-strong: var(--c-accent-strong);
+  --accent-contrast: var(--c-on-accent);
+  --accent-soft: color-mix(in oklch, var(--accent) 14%, var(--surface));
+  --focus-ring: var(--accent);
+  --shadow-color: 270 25% 12%;
+  --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.08),
+    0 4px 12px hsl(var(--shadow-color) / 0.06);
+  --shadow-2: 0 6px 24px hsl(var(--shadow-color) / 0.12);
+
+  /* ---- component tokens ---- */
+  --nav-height: 4.25rem;
+  --content-max: 72rem;
+  --content-pad: clamp(1rem, 0.5rem + 3vw, 2.5rem);
+  --card-padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+}
+
+/* Explicit dark choice. */
+[data-theme="dark"] {
+  --c-bg: oklch(0.17 0.012 270);
+  --c-bg-raised: oklch(0.213 0.016 270);
+  --c-bg-sunken: oklch(0.14 0.01 270);
+  --c-ink: oklch(0.95 0.01 270);
+  --c-ink-soft: oklch(0.73 0.02 270);
+  --c-line: oklch(0.31 0.016 270);
+  --c-accent: oklch(0.74 0.145 278);
+  --c-accent-strong: oklch(0.8 0.14 278);
+  --c-on-accent: oklch(0.16 0.012 270);
+  --shadow-color: 270 40% 2%;
+  --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.5),
+    0 4px 14px hsl(var(--shadow-color) / 0.4);
+  --shadow-2: 0 8px 30px hsl(var(--shadow-color) / 0.55);
+}
+
+/* System dark, only when no explicit theme is set (no-JS / no stored choice). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --c-bg: oklch(0.17 0.012 270);
+    --c-bg-raised: oklch(0.213 0.016 270);
+    --c-bg-sunken: oklch(0.14 0.01 270);
+    --c-ink: oklch(0.95 0.01 270);
+    --c-ink-soft: oklch(0.73 0.02 270);
+    --c-line: oklch(0.31 0.016 270);
+    --c-accent: oklch(0.74 0.145 278);
+    --c-accent-strong: oklch(0.8 0.14 278);
+    --c-on-accent: oklch(0.16 0.012 270);
+    --shadow-color: 270 40% 2%;
+    --shadow-1: 0 1px 2px hsl(var(--shadow-color) / 0.5),
+      0 4px 14px hsl(var(--shadow-color) / 0.4);
+    --shadow-2: 0 8px 30px hsl(var(--shadow-color) / 0.55);
+  }
+}

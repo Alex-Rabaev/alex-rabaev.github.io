@@ -1,0 +1,116 @@
+/* utilities.css — single-purpose helpers (authored in @layer utilities). */
+
+.u-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--content-pad);
+}
+
+.u-stack > * + * {
+  margin-top: var(--flow-space, var(--space-md));
+}
+
+.u-section {
+  padding-block: clamp(var(--space-2xl), 6vw, var(--space-3xl));
+}
+
+.u-section-head {
+  margin-bottom: var(--space-xl);
+}
+
+.u-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+}
+
+.u-eyebrow::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.u-lead {
+  font-size: var(--font-size-md);
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.u-skip-link {
+  position: absolute;
+  inset-inline-start: var(--space-sm);
+  inset-block-start: var(--space-sm);
+  z-index: 100;
+  padding: var(--space-2xs) var(--space-sm);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-radius: var(--radius-1);
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.u-skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-skip-link {
+    transition: none;
+  }
+}
+
+/*
+ * Scroll-reveal (FR-16 / UX-DR5).
+ * Hidden state applies ONLY when JS is active (html.js, set pre-paint) AND
+ * motion is allowed. No-JS or reduced-motion → content is visible immediately.
+ * Fires once: reveal.js adds .is-visible and stops observing.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(1rem);
+    /* Failsafe: if the JS module never runs (e.g. opened via file://, or a
+       load error), content still appears instead of staying hidden forever. */
+    animation: reveal-failsafe 0.4s ease 1.5s forwards;
+  }
+
+  html.js [data-reveal] {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  html.js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@keyframes reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

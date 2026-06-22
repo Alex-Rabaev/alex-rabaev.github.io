@@ -1,0 +1,112 @@
+/* hero.css — full-width positioning headline above the bento grid. */
+.hero {
+  position: relative;
+  padding-block: clamp(var(--space-2xl), 9vw, calc(var(--space-3xl) + 2rem));
+  overflow: hidden;
+}
+
+/* Subtle, token-driven accent glow (decorative, no motion). */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -30%;
+  inset-inline-end: -10%;
+  width: min(48rem, 70%);
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in oklch, var(--accent) 22%, transparent),
+    transparent 62%
+  );
+  filter: blur(8px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__inner {
+  max-width: 54rem;
+}
+
+.hero__title {
+  margin-top: var(--space-sm);
+}
+
+.hero__title .accent {
+  color: var(--accent);
+}
+
+.hero__lead {
+  margin-top: var(--space-md);
+  font-size: var(--font-size-md);
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  font-weight: var(--weight-semibold);
+  font-size: var(--font-size-sm);
+  border: 1px solid transparent;
+  min-height: 2.75rem;
+  transition: transform 0.18s ease, background-color 0.18s ease,
+    border-color 0.18s ease, color 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.btn--primary:hover {
+  background: var(--accent-strong);
+  color: var(--accent-contrast);
+}
+
+.btn--ghost {
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.hero__meta a {
+  color: var(--text-muted);
+}
+
+.hero__meta a:hover {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover {
+    transform: none;
+  }
+}
