@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Anti-FOUC: resolve theme + mark JS active BEFORE first paint.
-         This is the only script allowed to run before CSS. -->
+    <!-- Set theme before first paint to avoid a flash -->
     <script>
       (function () {
         try {
@@ -18,44 +17,39 @@
       })();
     </script>
 
-    <!-- Primary meta -->
-    <title>Alex Rabaev — Full-Stack Software Engineer</title>
+    <title>Alex Rabaev — Software Engineer</title>
     <meta
       name="description"
-      content="Alex Rabaev is a full-stack software engineer building fast, accessible web applications across the stack — JavaScript/TypeScript, Node.js, and modern front-end."
+      content="Alex Rabaev — software engineer with 5 years of experience building production systems in Python and TypeScript: backend services, REST APIs, databases, and reliable deployments."
     />
     <meta name="author" content="Alex Rabaev" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#2c2940" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href="https://alex-rabaev.github.io/" />
 
-    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://alex-rabaev.github.io/" />
-    <meta property="og:title" content="Alex Rabaev — Full-Stack Software Engineer" />
+    <meta property="og:title" content="Alex Rabaev — Software Engineer" />
     <meta
       property="og:description"
-      content="Full-stack software engineer building fast, accessible web applications. See selected projects, experience, and ways to get in touch."
+      content="Software engineer building reliable backends and full-stack systems in Python and TypeScript."
     />
     <meta property="og:image" content="https://alex-rabaev.github.io/assets/images/og-cover.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Alex Rabaev — Full-Stack Software Engineer" />
+    <meta name="twitter:title" content="Alex Rabaev — Software Engineer" />
     <meta
       name="twitter:description"
-      content="Full-stack software engineer building fast, accessible web applications."
+      content="Software engineer building reliable backends and full-stack systems in Python and TypeScript."
     />
     <meta name="twitter:image" content="https://alex-rabaev.github.io/assets/images/og-cover.png" />
 
-    <!-- Icons / manifest -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
 
-    <!-- Inline critical CSS slot: minimal first-paint safety net.
-         Full styling lives in css/main.css (render-blocking, layered). -->
     <style>
       :root {
         --nav-height: 4.25rem;
@@ -78,24 +72,25 @@
       }
     </style>
 
-    <!-- Fonts: self-hosted variable fonts go in assets/fonts/ (see README).
-         Until added, the token families fall back to a fast system stack. -->
     <link rel="stylesheet" href="css/main.css" />
-
-    <!-- Behavior layer: one plain script; site works without it. -->
     <script src="js/app.js" defer></script>
 
-    <!-- Structured data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Alex Rabaev",
         "url": "https://alex-rabaev.github.io/",
-        "jobTitle": "Full-Stack Software Engineer",
+        "jobTitle": "Software Engineer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tel Aviv",
+          "addressCountry": "IL"
+        },
+        "email": "mailto:rabaevav@gmail.com",
         "sameAs": [
-          "https://github.com/alex-rabaev",
-          "https://www.linkedin.com/in/alex-rabaev"
+          "https://github.com/Alex-Rabaev",
+          "https://www.linkedin.com/in/alexander-rabaev/"
         ]
       }
     </script>
@@ -104,7 +99,6 @@
   <body>
     <a class="u-skip-link" href="#main">Skip to content</a>
 
-    <!-- ============================ HEADER / NAV ============================ -->
     <header class="site-header" data-header>
       <div class="u-container site-header__bar">
         <a class="site-header__brand" href="#hero" aria-label="Alex Rabaev — home">
@@ -112,8 +106,8 @@
         </a>
 
         <nav class="nav" data-nav aria-label="Primary">
-          <ul class="nav__list" data-nav-list>
-            <li><a class="nav__link" href="#projects">Projects</a></li>
+          <ul class="nav__list" data-nav-list id="primary-nav-list">
+            <li><a class="nav__link" href="#projects">Work</a></li>
             <li><a class="nav__link" href="#experience">Experience</a></li>
             <li><a class="nav__link" href="#skills">Skills</a></li>
             <li><a class="nav__link" href="#about">About</a></li>
@@ -152,19 +146,18 @@
     </header>
 
     <main id="main">
-      <!-- ============================== HERO ============================== -->
+      <!-- Hero -->
       <section id="hero" class="hero">
         <div class="u-container hero__inner">
-          <p class="u-eyebrow">Full-Stack Software Engineer</p>
+          <p class="u-eyebrow">Software Engineer · Tel Aviv</p>
           <h1 class="hero__title" data-reveal>
-            I build fast, accessible<br />
-            web products <span class="accent">end to end.</span>
+            I build reliable backends<br />
+            and the systems <span class="accent">around them.</span>
           </h1>
-          <!-- TODO(content): tailor this positioning line to your real focus & stack. -->
           <p class="hero__lead" data-reveal>
-            I'm Alex — a software engineer who turns ambiguous problems into
-            reliable, well-crafted applications across the front end, back end,
-            and everything in between.
+            I'm Alex — a software engineer with 5 years of experience shipping
+            production systems in Python and TypeScript: backend services, REST
+            APIs, data and messaging layers, and the tests that keep them stable.
           </p>
 
           <div class="hero__actions" data-reveal>
@@ -177,115 +170,79 @@
 
           <div class="hero__meta" data-reveal>
             <a href="assets/resume.pdf" download>↓ Résumé (PDF)</a>
-            <a href="https://github.com/alex-rabaev" target="_blank" rel="noopener">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/alex-rabaev" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://github.com/Alex-Rabaev" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/alexander-rabaev/" target="_blank" rel="noopener">LinkedIn ↗</a>
           </div>
         </div>
       </section>
 
-      <!-- ============================ PROJECTS ============================ -->
+      <!-- Work -->
       <section id="projects" class="u-section">
         <div class="u-container">
           <div class="u-section-head" data-reveal>
             <p class="u-eyebrow">Selected Work</p>
-            <h2>Projects</h2>
+            <h2>Things I've built</h2>
             <p class="u-lead">
-              A few things I've designed, built, and shipped. Each links to a live
-              demo and the source.
+              A few systems I've designed and shipped in production. Most are
+              proprietary, so the details below stand in for a live demo.
             </p>
           </div>
 
-          <!-- TODO(content): replace with your real projects (3–5). Strongest first
-               as the featured 2×2 cell. Keep one sentence per card. -->
           <ul class="projects__grid" role="list">
             <li class="project-card project-card--featured" data-reveal>
               <div class="project-card__media">
                 <img
                   src="assets/images/projects/project-alpha-cover.svg"
-                  alt="Screenshot of the Project Alpha dashboard"
+                  alt="Abstract illustration of an analytics dashboard"
                   width="800" height="450" loading="lazy" decoding="async"
                 />
               </div>
               <div class="project-card__body">
-                <h3 class="project-card__title">Project Alpha</h3>
+                <h3 class="project-card__title">AI Assistants Platform</h3>
                 <p class="project-card__summary">
-                  A real-time analytics dashboard that turns raw event streams
-                  into decisions teams actually act on.
+                  A multi-tenant SaaS platform that lets businesses build and run
+                  custom conversational AI bots for Telegram and WhatsApp —
+                  microservices, async workers, RAG agents, and a React admin
+                  dashboard with real-time analytics.
                 </p>
                 <ul class="project-card__tags" role="list">
-                  <li>TypeScript</li><li>Node.js</li><li>WebSockets</li><li>PostgreSQL</li>
+                  <li>Python</li><li>FastAPI</li><li>MongoDB</li><li>RabbitMQ</li><li>LangChain</li>
                 </ul>
-                <div class="project-card__links">
-                  <a class="project-card__link" href="#" target="_blank" rel="noopener">
-                    Live demo
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M19 14v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                  <a class="project-card__link" href="#" target="_blank" rel="noopener">
-                    Source
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
-                  </a>
-                </div>
               </div>
             </li>
 
             <li class="project-card" data-reveal>
               <div class="project-card__body">
-                <h3 class="project-card__title">Project Beta</h3>
+                <h3 class="project-card__title">E2E API Testing Framework</h3>
                 <p class="project-card__summary">
-                  A developer CLI that automates release chores and cut setup
-                  time for the team in half.
+                  An end-to-end testing framework for public APIs, built from
+                  scratch — cut bug detection and resolution time by 72% and
+                  raised release confidence.
                 </p>
                 <ul class="project-card__tags" role="list">
-                  <li>Node.js</li><li>CLI</li><li>CI/CD</li>
+                  <li>TypeScript</li><li>NestJS</li><li>Jest</li>
                 </ul>
-                <div class="project-card__links">
-                  <a class="project-card__link" href="#" target="_blank" rel="noopener">Source
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
-                  </a>
-                </div>
               </div>
             </li>
 
             <li class="project-card" data-reveal>
               <div class="project-card__body">
-                <h3 class="project-card__title">Project Gamma</h3>
+                <h3 class="project-card__title">ERP &amp; Logistics System</h3>
                 <p class="project-card__summary">
-                  An accessible component library powering three internal apps
-                  from one design-token source.
+                  An internal ERP and logistics platform serving 100+ users, with
+                  60+ documented REST endpoints and automated test coverage that
+                  cut critical production errors by 50%.
                 </p>
                 <ul class="project-card__tags" role="list">
-                  <li>CSS</li><li>Web Components</li><li>a11y</li>
+                  <li>Python</li><li>Flask</li><li>PostgreSQL</li>
                 </ul>
-                <div class="project-card__links">
-                  <a class="project-card__link" href="#" target="_blank" rel="noopener">Live demo
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 4h6v6M20 4l-8 8M19 14v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
-                </div>
-              </div>
-            </li>
-
-            <li class="project-card" data-reveal>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Project Delta</h3>
-                <p class="project-card__summary">
-                  A side project exploring offline-first sync — because the best
-                  apps still work on the subway.
-                </p>
-                <ul class="project-card__tags" role="list">
-                  <li>IndexedDB</li><li>Service Worker</li><li>PWA</li>
-                </ul>
-                <div class="project-card__links">
-                  <a class="project-card__link" href="#" target="_blank" rel="noopener">Source
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
-                  </a>
-                </div>
               </div>
             </li>
           </ul>
         </div>
       </section>
 
-      <!-- =========================== EXPERIENCE =========================== -->
+      <!-- Experience -->
       <section id="experience" class="u-section">
         <div class="u-container">
           <div class="u-section-head" data-reveal>
@@ -293,39 +250,58 @@
             <h2>Experience</h2>
           </div>
 
-          <!-- TODO(content): replace with your real roles, newest first. -->
           <ol class="timeline" role="list">
             <li class="timeline__item" data-reveal>
               <div class="timeline__header">
                 <p class="timeline__role">
-                  Senior Software Engineer ·
-                  <span class="timeline__org">Example Company</span>
+                  Software Engineer, Full Stack ·
+                  <span class="timeline__org">Marguru</span>
                 </p>
-                <p class="timeline__dates"><time datetime="2023">2023</time> — Present</p>
+                <p class="timeline__dates"><time datetime="2024-07">Jul 2024</time> — Present</p>
               </div>
               <ul class="timeline__points">
-                <li>Led the rebuild of a core service, cutting p95 latency by ~40%.</li>
-                <li>Mentored three engineers and established the team's review standards.</li>
+                <li>Architected a multi-tenant AI Assistants Platform (Python, FastAPI, MongoDB, RabbitMQ) for conversational bots on Telegram and WhatsApp.</li>
+                <li>Built modular microservices with async message processing, webhook handling, and conversation orchestration across separate workers.</li>
+                <li>Implemented LLM agents with LangChain and GPT-4 plus RAG, with dynamic prompt management via LangSmith Hub for updates without redeployment.</li>
+                <li>Shipped a React/TypeScript admin dashboard backed by FastAPI aggregation pipelines for real-time analytics and user management.</li>
               </ul>
             </li>
+
             <li class="timeline__item" data-reveal>
               <div class="timeline__header">
                 <p class="timeline__role">
                   Software Engineer ·
-                  <span class="timeline__org">Another Company</span>
+                  <span class="timeline__org">NILOS</span>
                 </p>
-                <p class="timeline__dates"><time datetime="2020">2020</time> — <time datetime="2023">2023</time></p>
+                <p class="timeline__dates"><time datetime="2023-06">Jun 2023</time> — <time datetime="2024-07">Jul 2024</time></p>
               </div>
               <ul class="timeline__points">
-                <li>Shipped customer-facing features used by tens of thousands of users.</li>
-                <li>Drove the migration to a typed, test-backed codebase.</li>
+                <li>Delivered 20+ production features across core business APIs in NestJS and TypeScript.</li>
+                <li>Built a Jest unit-testing suite that raised coverage by 40% and cut production incidents by 55%.</li>
+                <li>Created an end-to-end API testing framework from scratch, reducing bug detection and resolution time by 72%.</li>
+                <li>Tuned database performance (indexes, query optimization), improving key endpoint response times by ~25%.</li>
+              </ul>
+            </li>
+
+            <li class="timeline__item" data-reveal>
+              <div class="timeline__header">
+                <p class="timeline__role">
+                  Backend Engineer ·
+                  <span class="timeline__org">Mainer</span>
+                </p>
+                <p class="timeline__dates"><time datetime="2021-03">Mar 2021</time> — <time datetime="2023-04">Apr 2023</time></p>
+              </div>
+              <ul class="timeline__points">
+                <li>Designed an internal ERP and logistics system (Flask, PostgreSQL) serving 100+ users across operations and supply workflows.</li>
+                <li>Built and documented 60+ REST endpoints, cutting manual processing time by 30%.</li>
+                <li>Added comprehensive Pytest coverage, reducing critical production errors by 50%.</li>
               </ul>
             </li>
           </ol>
         </div>
       </section>
 
-      <!-- ============================= SKILLS ============================= -->
+      <!-- Skills -->
       <section id="skills" class="u-section">
         <div class="u-container">
           <div class="u-section-head" data-reveal>
@@ -333,37 +309,48 @@
             <h2>Skills</h2>
           </div>
 
-          <!-- TODO(content): keep this curated and honest — not an exhaustive wall. -->
           <div class="skills__grid">
             <div class="skill-group" data-reveal>
               <p class="skill-group__title">Languages</p>
               <ul class="skill-group__list" role="list">
-                <li>TypeScript</li><li>JavaScript</li><li>Python</li><li>SQL</li>
+                <li>Python</li><li>TypeScript</li><li>JavaScript</li><li>C / C++</li>
               </ul>
             </div>
             <div class="skill-group" data-reveal>
-              <p class="skill-group__title">Front-End</p>
+              <p class="skill-group__title">Backend</p>
               <ul class="skill-group__list" role="list">
-                <li>HTML</li><li>CSS</li><li>Web Components</li><li>Accessibility</li>
+                <li>FastAPI</li><li>Django / DRF</li><li>Flask</li><li>Node.js</li><li>NestJS</li><li>REST</li>
               </ul>
             </div>
             <div class="skill-group" data-reveal>
-              <p class="skill-group__title">Back-End</p>
+              <p class="skill-group__title">Data</p>
               <ul class="skill-group__list" role="list">
-                <li>Node.js</li><li>REST</li><li>PostgreSQL</li><li>Redis</li>
+                <li>PostgreSQL</li><li>MongoDB</li><li>MySQL</li><li>Redis</li>
               </ul>
             </div>
             <div class="skill-group" data-reveal>
-              <p class="skill-group__title">Platform</p>
+              <p class="skill-group__title">Architecture</p>
               <ul class="skill-group__list" role="list">
-                <li>Docker</li><li>CI/CD</li><li>AWS</li><li>Git</li>
+                <li>Microservices</li><li>Multi-tenant SaaS</li><li>RabbitMQ</li><li>Async workers</li>
+              </ul>
+            </div>
+            <div class="skill-group" data-reveal>
+              <p class="skill-group__title">AI / LLM</p>
+              <ul class="skill-group__list" role="list">
+                <li>LangChain</li><li>LangGraph</li><li>LangSmith</li><li>OpenAI API</li><li>RAG</li>
+              </ul>
+            </div>
+            <div class="skill-group" data-reveal>
+              <p class="skill-group__title">Testing &amp; Platform</p>
+              <ul class="skill-group__list" role="list">
+                <li>PyTest</li><li>Jest</li><li>Docker</li><li>AWS</li><li>CI/CD</li><li>Auth0</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============================== ABOUT ============================== -->
+      <!-- About -->
       <section id="about" class="u-section">
         <div class="u-container">
           <div class="u-section-head" data-reveal>
@@ -371,36 +358,36 @@
             <h2>About</h2>
           </div>
 
-          <!-- TODO(content): make this about how you think & what you're after.
-               Add a headshot at assets/images/headshot.* and the --with-photo class. -->
           <div class="about">
             <div class="about__body" data-reveal>
               <p>
-                I care about the unglamorous parts of software — the edge cases,
-                the load times, the keyboard users — because that's where good
-                products are won or lost.
+                I'm a backend-leaning full-stack engineer based in Tel Aviv. Most
+                of my work lives in the parts users never see — the APIs, the data
+                models, the message queues — where reliability and observability
+                decide whether a product actually holds up in production.
               </p>
               <p>
-                I like working <strong>end to end</strong>: shaping the problem,
-                designing the data model, building the interface, and sweating
-                the details until it feels effortless to use.
+                I have a <strong>Master's in Engineering</strong> and a soft spot
+                for complex systems and scalable architectures. I like owning a
+                problem end to end: shaping it, building it, testing it properly,
+                and keeping it stable once it's live.
               </p>
               <p>
-                Right now I'm looking for a team that values craft, ownership,
-                and shipping things that matter.
+                I pick up new technologies and domains quickly, and I'm looking for
+                a team that values craft, ownership, and shipping things that matter.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============================= RÉSUMÉ ============================= -->
+      <!-- Résumé -->
       <section id="resume" class="u-section">
         <div class="u-container">
           <div class="resume" data-reveal>
             <div class="resume__text">
               <h2 class="resume__title">Want the short version?</h2>
-              <p>Grab my résumé as a one-page PDF.</p>
+              <p>Grab my résumé as a PDF.</p>
             </div>
             <a class="btn btn--primary" href="assets/resume.pdf" download>
               Download Résumé (PDF)
@@ -410,32 +397,31 @@
         </div>
       </section>
 
-      <!-- ============================= CONTACT ============================= -->
+      <!-- Contact -->
       <section id="contact" class="u-section">
         <div class="u-container contact" data-reveal>
           <p class="u-eyebrow">Let's Talk</p>
           <h2>Get in touch</h2>
           <p class="u-lead" style="text-align: center">
-            Open to full-time roles and interesting problems. The fastest way to
-            reach me is email.
+            Open to software engineering roles and interesting problems. Email is
+            the fastest way to reach me.
           </p>
-          <!-- TODO(content): set your real email below (and in the footer). -->
-          <a class="contact__email" href="mailto:hello@alex-rabaev.dev">hello@alex-rabaev.dev</a>
+          <a class="contact__email" href="mailto:rabaevav@gmail.com">rabaevav@gmail.com</a>
           <ul class="contact__socials" role="list">
             <li>
-              <a class="contact__social" href="https://github.com/alex-rabaev" target="_blank" rel="noopener">
+              <a class="contact__social" href="https://github.com/Alex-Rabaev" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
                 GitHub
               </a>
             </li>
             <li>
-              <a class="contact__social" href="https://www.linkedin.com/in/alex-rabaev" target="_blank" rel="noopener">
+              <a class="contact__social" href="https://www.linkedin.com/in/alexander-rabaev/" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1-.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.4 8.65 21 10.9 21 14v7h-4v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V21H9z"/></svg>
                 LinkedIn
               </a>
             </li>
             <li>
-              <a class="contact__social" href="mailto:hello@alex-rabaev.dev">
+              <a class="contact__social" href="mailto:rabaevav@gmail.com">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Email
               </a>
@@ -445,13 +431,10 @@
       </section>
     </main>
 
-    <!-- ============================== FOOTER ============================== -->
     <footer class="site-footer">
       <div class="u-container site-footer__inner">
         <p class="site-footer__note">© <span id="year">2026</span> Alex Rabaev</p>
-        <p class="site-footer__note">
-          Built from scratch with HTML, CSS &amp; vanilla JS · no frameworks.
-        </p>
+        <p class="site-footer__note">Tel Aviv, Israel</p>
       </div>
     </footer>
   </body>
