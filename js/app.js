@@ -1,12 +1,6 @@
-/*
- * app.js — one plain script (no modules) so the site runs by simply opening
- * index.html in a browser. Pure progressive enhancement: the page works fully
- * without this file. Handles theme toggle, mobile nav, scroll reveal, and year.
- */
 (function () {
   "use strict";
 
-  /* ---------------- Theme ---------------- */
   var root = document.documentElement;
   var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
   var toggles = [];
@@ -23,9 +17,7 @@
   function writeStored(theme) {
     try {
       localStorage.setItem("theme", theme);
-    } catch (e) {
-      /* private mode — ignore */
-    }
+    } catch (e) {}
   }
 
   function currentTheme() {
@@ -63,7 +55,6 @@
     });
   }
 
-  /* ---------------- Mobile nav ---------------- */
   var FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   function initNav() {
@@ -119,7 +110,6 @@
     });
   }
 
-  /* ---------------- Active section + sticky header ---------------- */
   function initActiveSection() {
     var links = Array.prototype.slice.call(
       document.querySelectorAll("[data-nav-list] a[href^='#']")
@@ -168,7 +158,6 @@
     window.addEventListener("scroll", update, { passive: true });
   }
 
-  /* ---------------- Scroll reveal ---------------- */
   function initReveal() {
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var items = Array.prototype.slice.call(
@@ -196,7 +185,6 @@
     });
   }
 
-  /* ---------------- Misc ---------------- */
   function initYear() {
     var el = document.getElementById("year");
     if (el) el.textContent = new Date().getFullYear();
