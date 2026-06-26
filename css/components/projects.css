@@ -1,4 +1,3 @@
-/* projects.css — responsive bento grid container. */
 .projects__grid {
   display: grid;
   gap: clamp(var(--space-sm), 1.5vw, var(--space-md));

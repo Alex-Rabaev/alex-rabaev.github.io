@@ -1,8 +1,4 @@
-/*
- * main.css — cascade-layer entry point.
- * Declares the canonical @layer order ONCE; later layers win.
- * Each file below is authored inside its matching @layer.
- */
+/* Layer order is declared once here; everything else is imported into a layer. */
 @layer reset, tokens, base, components, utilities;
 
 @import url("reset.css") layer(reset);

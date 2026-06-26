@@ -1,4 +1,3 @@
-/* about.css — concise problem-solving narrative + optional headshot. */
 .about {
   display: grid;
   gap: var(--space-xl);

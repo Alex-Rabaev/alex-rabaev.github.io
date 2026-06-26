@@ -1,4 +1,3 @@
-/* skills.css — curated skill groups. */
 .skills__grid {
   display: grid;
   gap: var(--space-md);

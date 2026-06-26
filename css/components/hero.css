@@ -1,4 +1,3 @@
-/* hero.css — full-width positioning headline above the bento grid. */
 .hero {
   position: relative;
   padding-block: clamp(var(--space-2xl), 9vw, calc(var(--space-3xl) + 2rem));

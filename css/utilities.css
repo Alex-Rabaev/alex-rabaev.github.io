@@ -1,5 +1,3 @@
-/* utilities.css — single-purpose helpers (authored in @layer utilities). */
-
 .u-container {
   width: 100%;
   max-width: var(--content-max);
@@ -80,18 +78,12 @@
   }
 }
 
-/*
- * Scroll-reveal (FR-16 / UX-DR5).
- * Hidden state applies ONLY when JS is active (html.js, set pre-paint) AND
- * motion is allowed. No-JS or reduced-motion → content is visible immediately.
- * Fires once: reveal.js adds .is-visible and stops observing.
- */
+/* Scroll-reveal: only hides content when JS is active and motion is allowed.
+   The failsafe animation guarantees content appears even if the script never runs. */
 @media (prefers-reduced-motion: no-preference) {
   html.js [data-reveal]:not(.is-visible) {
     opacity: 0;
     transform: translateY(1rem);
-    /* Failsafe: if the JS module never runs (e.g. opened via file://, or a
-       load error), content still appears instead of staying hidden forever. */
     animation: reveal-failsafe 0.4s ease 1.5s forwards;
   }
 
