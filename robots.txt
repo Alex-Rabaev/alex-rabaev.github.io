@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /_bmad/
-Disallow: /_bmad-output/
-
-Sitemap: https://alex-rabaev.github.io/sitemap.xml

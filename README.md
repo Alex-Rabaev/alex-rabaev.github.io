@@ -69,8 +69,7 @@ This repo is a GitHub **user site**, so it deploys at the root domain:
 1. Push to the `main` branch.
 2. Repo **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
    branch `main`, folder `/ (root)`.
-3. Live at <https://alex-rabaev.github.io/>. The `.nojekyll` file ensures `css/`
-   and `js/` are served verbatim (no Jekyll processing).
+3. Live at <https://alex-rabaev.github.io/>.
 
 ## Quality checklist before launch
 
